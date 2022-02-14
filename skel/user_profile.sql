@@ -5,19 +5,6 @@ create table user_profile (
 	email VARCHAR(50)
 );
 
-CREATE ROLE anon nologin;
-GRANT USAGE ON SCHEMA public TO anon;
-GRANT SELECT ON public.user_profile TO anon;
-
-CREATE ROLE authenticator noinherit login PASSWORD 'password';
-GRANT anon TO authenticator;
-
-CREATE ROLE slackbot nologin;
-GRANT slackbot TO authenticator;
-GRANT USAGE ON SCHEMA public TO slackbot;
-GRANT ALL ON public.user_profile TO slackbot;
-
-
 insert into user_profile (fname, lname, email) values ('manny', 'furnell', 'mfurnell0@elegantthemes.com');
 insert into user_profile (fname, lname, email) values ('andi', 'alkin', 'aalkin1@ucoz.com');
 insert into user_profile (fname, lname, email) values ('kennett', 'herley', 'kherley2@samsung.com');

@@ -4,7 +4,7 @@ A POC to demonstrate using Slack text messaging to fetch data in a database and 
 
 ## Set up Flask web app
 
-Prerequiremnts:
+Prerequirements:
 1. `python3` is installed.
 2. `docker` and `docker-compose` are installed.
 3. `ngrok` is install/available
@@ -114,8 +114,32 @@ Note: it's name should the same as Slack app name you enter.
 
 
 ## Try it out
+Use `get [option] [filter]`
 
-Text `get -fname carson` to get all users with first name is carson
+Source:
+
+
+    -t, --table 	Table name (currently `user_profile` and `country`)
+
+
+Filters: Depending on the table filter option
+	
+	Table `user_profile`
+	
+	--fname		First name
+	
+	--lname		Last name
+	
+	--email      Email
+
+	Table `country`
+	
+	--code		Country code
+	
+	--name       Country name
+
+
+Text `get -t user_profile --fname carson` to get all users with first name is carson
 ```
 +-----+--------+------------+---------------------------+
 |  id | fname  |   lname    |           email           |
@@ -126,7 +150,7 @@ Text `get -fname carson` to get all users with first name is carson
 ```
 
 
-Text `get -lname kleinzweig` to get all users with last name is kleinzweig
+Text `get -t user_profile --lname kleinzweig` to get all users with last name is kleinzweig
 ```
 +-----+--------+------------+-------------------------+
 |  id | fname  |   lname    |          email          |
@@ -135,8 +159,17 @@ Text `get -lname kleinzweig` to get all users with last name is kleinzweig
 +-----+--------+------------+-------------------------+
 ```
 
+Text `get --table country --code SG`
+```
++----+------+-----------+
+| id | code |    name   |
++----+------+-----------+
+| 9  |  SG  | Singapore |
++----+------+-----------+
+```
+
 ## Limitation
-1. Excatly matching
+1. Excatly matching and case sensitive
 2. Only can search by first name and last name
 3. Can only seach one value at a time
 
@@ -155,8 +188,8 @@ create table user_profile (
 
 Set up role and permission for Slackbot
 Taken from PostgREST tutorials
-[refer: ](https://postgrest.org/en/stable/tutorials/tut0.html)
-[refer: ](https://postgrest.org/en/stable/tutorials/tut1.html)
+[1](https://postgrest.org/en/stable/tutorials/tut0.html)
+[2](https://postgrest.org/en/stable/tutorials/tut1.html)
 
 ```sql
 CREATE ROLE anon nologin;
