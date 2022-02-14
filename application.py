@@ -120,7 +120,7 @@ def reply_to(say, context):
         # Finally print the table on Slack
         say(f"```{ptable.get_string()}```")
     except SlackMessageParseError as e0:
-        say(f"Hmm... {e0}")
+        say(f"Error: {e0}")
     except Exception as e:
         say("Something went wrong :(")
         raise e
