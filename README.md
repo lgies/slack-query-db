@@ -62,7 +62,7 @@ The Flask app will be run on port 5000 by default. You can change it in the `.en
 
 Use ngrok to publish your Flask app so that Slack can verify
 
-Use `ngrok` run `ngrok http 5000` or (run `./ngrok http 5000` from the applications folder)
+Use `ngrok` run `ngrok http 5000`
 
 Sample output:
 
