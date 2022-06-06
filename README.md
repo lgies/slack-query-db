@@ -7,7 +7,7 @@ A POC to demonstrate using Slack text messaging to fetch data in a database and 
 Prerequirements:
 1. `python3` is installed.
 2. `docker` and `docker-compose` are installed.
-3. `ngrok` is install/available
+3. `ngrok` is installed/available
 
 
 ### Step 0: Virtual environment
@@ -206,3 +206,8 @@ GRANT USAGE ON SCHEMA public TO slackbot;
 GRANT ALL ON public.user_profile TO slackbot;
 ```
 
+## Troubleshooting
+
+make sure ngrok runs in the background and check messages in terminal
+make sure ngrok url is updated into slack events tab
+make sure docker is up and running and all containers are working
